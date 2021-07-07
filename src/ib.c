@@ -9,15 +9,10 @@
  *
  */
 
-#include "ib.h"
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
+#include "libin.h"
 
 /**
- * @brief Initialize and allocate an input buffer; caller expected to invoke `free_ib`
+ * @brief Initialize and allocate an input buffer; caller expected to invoke `ib_free`
  *
  * @param fd
  * @return InputBuffer*
@@ -59,7 +54,7 @@ InputBuffer* ib_read(InputBuffer* ib) {
  *
  * @param ib
  */
-void free_ib(InputBuffer* ib) {
+void ib_free(InputBuffer* ib) {
 	free(ib->buffer);
 	free(ib);
 }
