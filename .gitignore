@@ -1,3 +1,5 @@
-libin.so
-lib_in.dll
+*.so
+*.o
+*.dll
 .vscode
+main

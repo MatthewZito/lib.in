@@ -29,6 +29,14 @@ gcc -o main.exe main.o -L /path/to/lib.in -llib_in.dll
 # you may need to add the lib location to your PATH
 ```
 
+## Testing
+
+```bash
+chmod -R u+x ./scripts
+
+./scripts/test.bash
+```
+
 ## API and Documentation
 
 ### InputBuffer
@@ -70,4 +78,14 @@ Deallocate dynamic memory used by an input buffer
 
 ```c
 void ib_free(InputBuffer* ib);
+```
+
+### Signal Input
+
+#### intercept_sig
+
+Invoke either `sigerr_callback` or `sig_callback` when receiving a signal of `sig_target`; the former is invoked if `SIG_ERR` is captured.
+
+```c
+void intercept_sig(int sig_target, void(*sigerr_callback)(int), void(*sig_callback)(int));
 ```

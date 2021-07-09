@@ -6,21 +6,34 @@
 #include <string.h>
 #include <time.h>
 
+/**********************
+ *
+ * InputBuffer
+ *
+ *********************/
+
 /**
  * @brief Represents an input buffer and associated metadata
  */
-typedef struct
-{
-	char *buffer;					 /* user input buffer */
+typedef struct {
+	char* buffer;					 /* user input buffer */
 	size_t buffer_size;		 /* user input buffer size */
 	ssize_t input_size;		 /* user input size */
-	FILE *file_descriptor; /* file stream from which to read user input into buffer */
+	FILE* file_descriptor; /* file stream from which to read user input into buffer */
 } InputBuffer;
 
-InputBuffer *ib_init(FILE *fd);
+InputBuffer* ib_init(FILE* fd);
 
-InputBuffer *ib_read(InputBuffer *ib);
+InputBuffer* ib_read(InputBuffer* ib);
 
-void ib_free(InputBuffer *ib);
+void ib_free(InputBuffer* ib);
+
+/**********************
+ *
+ * Signal Input
+ *
+ *********************/
+
+void sig_intercept(int sig_target, void(*sigerr_callback)(int), void(*sig_callback)(int));
 
 #endif
